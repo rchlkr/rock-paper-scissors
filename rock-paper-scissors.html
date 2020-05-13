@@ -13,8 +13,8 @@
 
             //returns player's selection
             function humanPlay() {
-                playerSelection = prompt('Rock, paper or scissors?');
-                return playerSelection.toLowerCase();
+                playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
+                return playerSelection;
             }
 
             //returns computer's selection
@@ -35,8 +35,10 @@
                            (playerSelection === 'paper' && computerSelection === 'scissors')) {
                                 console.log('You lost this round.');
                                 computerScore++;
-                } else {
+                } else if (playerSelection === computerSelection) {
                     console.log('Ohh...a tie.');
+                } else {
+                    console.log('Error: invalid input');
                 }
             }
 
