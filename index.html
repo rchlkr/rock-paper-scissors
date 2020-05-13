@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock, Paper, Scissors!</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+
+            //initialize score variables
+            playerScore = 0;
+            computerScore = 0;
+
+            //returns player's selection
+            function humanPlay() {
+                playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
+                return playerSelection;
+            }
+
+            //returns computer's selection
+            function computerPlay() {
+                let playOptions = ['rock', 'paper', 'scissors'];
+                return computerSelection = playOptions[Math.floor(Math.random() * playOptions.length)];           
+            }
+            //plays single round of RPS
+            function playRound(playerSelection, computerSelection) {
+                console.log(`You: ${playerSelection} | Computer: ${computerSelection}`);
+                if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+                    (playerSelection === 'paper' && computerSelection === 'rock') ||
+                    (playerSelection === 'scissors' && computerSelection === 'paper')) {
+                        console.log('You won this round!');
+                        playerScore++;
+                } else if ((playerSelection === 'scissors' && computerSelection === 'rock') ||
+                           (playerSelection === 'rock' && computerSelection === 'paper') ||
+                           (playerSelection === 'paper' && computerSelection === 'scissors')) {
+                                console.log('You lost this round.');
+                                computerScore++;
+                } else if (playerSelection === computerSelection) {
+                    console.log('Ohh...a tie.');
+                } else {
+                    console.log('Error: invalid input');
+                }
+            }
+
+            //shows total score after each round
+            function keepScore() {
+                console.log(`You: ${playerScore} | Computer: ${computerScore}`);
+            }
+
+            //repeat playRound() 5 times
+            function game() {
+                for (i = 0; i < 5; i++) {
+                    playRound(humanPlay(), computerPlay());
+                    keepScore();
+                } if (i = 4) {
+                    console.log('Game finished.');
+                    if (playerScore === computerScore) {
+                        console.log('You tied the computer.');
+                    } else if (playerScore > computerScore) {
+                        console.log('You won! Nice job.');
+                    } else if (playerScore < computerScore) {
+                        console.log('You lost. Better luck next time.');
+                    }
+                }
+            }        
+            
+            game();
+
+        </script>
+    </body>
+</html>
